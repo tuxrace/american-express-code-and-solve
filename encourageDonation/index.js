@@ -1,4 +1,4 @@
-const sampleObject = {
+const sampleInput = {
   max: 20,
   cookies: [
     { name: 'oreo', price: 5, donation: 2 },
@@ -40,7 +40,7 @@ function donation(max, cookies) {
   return compute(sorted)
 }
 
-const { max, cookies } = sampleObject
+const { max, cookies } = sampleInput
 const result = donation(max, cookies)
 
 console.log(result)

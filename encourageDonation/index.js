@@ -20,19 +20,20 @@ function donation(max, cookies) {
     }
   })
 
-  function compute(arr, ctr = 0, total = 0, donate = 0) {
+  function compute(arr, ctr = 0, total = 0, donate = 0, cookieDonated=[]) {
     if (ctr > arr.length - 1) {
-      return donate
+      return {donation: donate, cookies: cookieDonated}
     } else {
       total = total + arr[ctr].price
       if ((max - total) > 0) {
         donate = donate + arr[ctr].donation
-        return compute(arr, ctr, total, donate)
+        cookieDonated.push(arr[ctr])
+        return compute(arr, ctr, total, donate, cookieDonated)
       } else {
         const prevPrice = arr[ctr].price
         ctr = ctr + 1
         total = total - prevPrice
-        return compute(arr, ctr, total, donate)
+        return compute(arr, ctr, total, donate, cookieDonated)
       }
     }
   }
